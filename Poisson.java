@@ -73,6 +73,16 @@ public class Poisson {
         return s;
     }
 
+    public boolean mange(Poisson p){
+
+        return false;
+    }
+
+    public boolean mange(Algue a){
+
+        return false;
+    }
+
     public String getNom(){
         return nom;
     }
