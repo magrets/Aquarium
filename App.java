@@ -9,7 +9,7 @@ public class App {
             System.out.println("1. Ajouter un poisson");
             System.out.println("2. Ajouter une algue");
             System.out.println("3. Faire passer un tour");
-            System.out.println("4. Faire passer un tour");
+            System.out.println("4. Quitter l'aquarium");
 
             choix = MySc.sc.nextByte();
 

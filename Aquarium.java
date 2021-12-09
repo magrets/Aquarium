@@ -26,10 +26,10 @@ public class Aquarium {
     public void afficheAquarium(){
         Collection<Poisson> c = DicoPoisson.values();
 
-        System.out.println("L'aquarium contient " + DicoPoisson.size() + " poisson dont voici la liste :");
+        System.out.println("L'aquarium contient " + DicoPoisson.size() + " poisson(s) dont voici la liste :");
         for (Poisson p : c){
             p.affichePoisson();
         }
-        System.out.println("Il y a aussi " + listAlgues.size() + "algues.");
+        System.out.println("Il y a aussi " + listAlgues.size() + " algue(s).");
     }
 }
