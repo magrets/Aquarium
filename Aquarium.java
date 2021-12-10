@@ -1,35 +1,65 @@
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 
 public class Aquarium {
-    private HashMap<String, Poisson> DicoPoisson;
-    private ArrayList<Algue> listAlgues;
+    private ArrayList<EtreVivant> listAquarium;
 
     public Aquarium(){
-        DicoPoisson = new HashMap<String, Poisson>();
-        listAlgues = new ArrayList<Algue>();
+        listAquarium = new ArrayList<EtreVivant>();
     }
 
     public void ajoutePoisson(){
-        //Si ce poisson n'existe pas encore
-        Poisson p = new Poisson();
-        if(DicoPoisson.get(p.getNom()) == null){
-            DicoPoisson.put(p.getNom(), p);
+        Poisson p = quelleEspece();
+        //Si ce poisson n'existe pas encore et qu'il a bien était créé
+
+        if(p != null){
+            listAquarium.add(p);
         }        
     }
 
     public void ajouteAlgue(){
-        listAlgues.add(new Algue());
+        listAquarium.add(new Algue());
     }
 
     public void afficheAquarium(){
-        Collection<Poisson> c = DicoPoisson.values();
-
-        System.out.println("L'aquarium contient " + DicoPoisson.size() + " poisson(s) dont voici la liste :");
-        for (Poisson p : c){
-            p.affichePoisson();
+        System.out.println("L'aquarium contient " + listAquarium.size() + " poisson(s) et algues dont voici la liste :");
+        for (EtreVivant etre : listAquarium){
+            etre.afficher();
         }
-        System.out.println("Il y a aussi " + listAlgues.size() + " algue(s).");
+    }
+
+    private Poisson quelleEspece(){
+        Poisson p;
+        byte choix = 0;
+
+        do{
+            System.out.println("salut");
+            System.out.println("Quelle est l'espèce [1.Mérou, 2.Thon 3.Poisson-clown 4.Sole 5.Bar 6.Carpe] :");
+            choix = MySc.sc.nextByte();
+
+            switch(choix){
+                case 1:
+                    p = new PoissonCarnivore("Mérou");
+                    break;
+                case 2:
+                p = new PoissonCarnivore("Thon");
+                    break;
+                case 3:
+                p = new PoissonHerbivore("Poisson-clown");
+                    break;
+                case 4:
+                p = new PoissonHerbivore("Sole");
+                    break;
+                case 5:
+                p = new PoissonCarnivore("Bar");
+                    break;
+                case 6:
+                p = new PoissonHerbivore("Carpe");
+                    break;
+                default:
+                    p = null;
+                    break;
+            }
+        }while(choix < 0 && choix >= 6);
+        return p;
     }
 }
