@@ -1,10 +1,9 @@
 public class Poisson extends EtreVivant{
     protected String nom;
     protected String sexe;
-    protected String espece;
-    protected boolean carnivore;
 
     public Poisson(String e){
+        super();
         System.out.println("Quel est le nom du poisson :");
         nom = MySc.sc.next();
         sexe = verifSexe();

@@ -3,8 +3,9 @@ public class App {
         Aquarium bocal = new Aquarium();
         byte choix = 0;
 
+        System.out.println("Bienvenue dans l'aquarium !");
+        
         do{
-            System.out.println("Bienvenue dans l'aquarium !");
             System.out.println("Que voulez faire :");
             System.out.println("1. Ajouter un poisson");
             System.out.println("2. Ajouter une algue");
@@ -21,7 +22,7 @@ public class App {
                     bocal.ajouteAlgue();
                     break;
                 case 3:
-                    bocal.afficheAquarium();
+                    bocal.passerTour();
                     break;
                 case 4:
                     sortir();

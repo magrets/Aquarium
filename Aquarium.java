@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 public class Aquarium {
     private ArrayList<EtreVivant> listAquarium;
@@ -32,7 +34,6 @@ public class Aquarium {
         byte choix = 0;
 
         do{
-            System.out.println("salut");
             System.out.println("Quelle est l'espèce [1.Mérou, 2.Thon 3.Poisson-clown 4.Sole 5.Bar 6.Carpe] :");
             choix = MySc.sc.nextByte();
 
@@ -61,5 +62,40 @@ public class Aquarium {
             }
         }while(choix < 0 && choix >= 6);
         return p;
+    }
+
+    public void passerTour(){
+        int random;
+        EtreVivant e;
+        Iterator<EtreVivant> itr = listAquarium.iterator();
+
+        afficheAquarium();
+        
+        while(itr.hasNext()){
+            random = tirageAleatoire();
+            e = itr.next();
+            if(e.getEspece() != "algue" && e.isVivant()){
+                if(e.mange(listAquarium.get(random))){
+                    listAquarium.get(random).vivant = false;
+                }
+            }
+        }
+        suprManger();
+    }
+    private void suprManger(){
+        Iterator<EtreVivant> itr = listAquarium.iterator();
+        EtreVivant e;
+
+        while(itr.hasNext()){
+            e = itr.next();
+            if(!e.isVivant()){
+                itr.remove();
+            }
+        }
+    }
+
+    private int tirageAleatoire(){
+        Random random = new Random();
+        return random.nextInt(listAquarium.size()-1); 
     }
 }
